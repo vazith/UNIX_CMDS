@@ -43,3 +43,53 @@ root    ALL=(ALL)       ALL
 #includedir /etc/sudoers.d )
 
 
+2. HOW CAN GIVE PERMISSION LIKE USER LIKE ROOT (FOLLOW BELOW METHOD) 
+
+Here are the methods to grant root-like permissions to a user in Linux:
+
+1. Adding the User to the root Group:
+
+    Open a terminal window and use the usermod command:
+     Bash
+                  |
+                  V
+    sudo usermod -aG root <username>
+
+    Use code with caution. Learn more
+
+    Replace <username> with the actual username.
+
+2. Granting Sudo Access:
+
+    Use the visudo command to edit the /etc/sudoers file:
+    Bash
+                  |
+                  V
+              sudo visudo
+
+    Use code with caution. Learn more
+
+    Add the following line, replacing <username> with the actual username:
+
+    <username> ALL=(ALL:ALL) ALL
+
+3. Editing the /etc/passwd File (Not Recommended):
+
+    Only use this method if the other methods don't work, as it involves directly editing a sensitive system file.
+
+    Open the /etc/passwd file with a text editor:
+    Bash   
+               |
+               v
+    sudo nano /etc/passwd (OR) sudo vi /etc/passwd
+
+    Use code with caution. Learn more
+
+    Find the line for the user and change the UID and GID to 0:
+
+    <username>:x:0:0:<user_name>:/home/<username>:/bin/bash
+
+    Save the changes.
+
+
+
