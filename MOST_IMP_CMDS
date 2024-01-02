@@ -1,0 +1,43 @@
+HOW CAN GIVE PERMISSION TO USER ..THAT USER NEEDS ALL
+POWERS AND PERMISSION WHAT A USER DO'S ....?
+EX :
+----> in linux i created one user and im doing all the work by using 
+that user now i using this cmd sudo reboot (it shows ERROR : WAS is not in the 
+sudoers file. This incident will be reported.how can i resolve this issuse )
+
+---( TO OVER THIS PROBLEM )---
+          |
+          V
+     RUN THIS CMD 
+       visudo
+         |
+         V
+GO TO LAST LINES OF THAT FILE 
+U SEE LIKE THIS
+( ## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+
+## Allows members of the 'sys' group to run networking, software,
+## service management apps and more.
+# %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
+
+## Allows people in group wheel to run all commands
+%wheel  ALL=(ALL)       ALL
+(EX:)%WAS ALL=(ALL:ALL) ALL
+
+
+## Same thing without a password
+# %wheel        ALL=(ALL)       NOPASSWD: ALL
+(EX:)%WAS ALL=(ALL:ALL) ALL < ----
+
+## Allows members of the users group to mount and unmount the
+## cdrom as root
+# %users  ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom
+
+## Allows members of the users group to shutdown this system
+# %users  localhost=/sbin/shutdown -h now
+
+## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
+#includedir /etc/sudoers.d )
+
+
